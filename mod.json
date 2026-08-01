@@ -1,7 +1,10 @@
 {
 	"geode": "4.0.0",
 	"gd": {
-		"win": "2.206"
+		"win": "2.2081",
+		"mac": "*",
+		"android": "*",
+		"ios": "*"
 	},
 	"id": "yeya.instant_complete_reset",
 	"name": "Instant Complete Reset",
