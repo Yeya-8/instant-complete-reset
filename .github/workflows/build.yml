@@ -14,5 +14,3 @@ jobs:
 
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
-        with:
-          sdk: v3.0.0
