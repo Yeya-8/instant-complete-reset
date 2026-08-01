@@ -5,7 +5,7 @@
 	},
 	"id": "yeya.instant_complete_reset",
 	"name": "Instant Complete Reset",
-	"version": "v1.0.0",
+	"version": "1.0.0",
 	"developer": "Yeya",
 	"description": "Restarts the level instantly with R during completion with 0% pause menu flash."
 }
