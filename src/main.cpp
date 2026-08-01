@@ -3,7 +3,7 @@
 
 using namespace geode::prelude;
 
-class $modify(PlayLayer) {
+class $modify(MyPlayLayer, PlayLayer) {
     void keyDown(cocos2d::enumKeyCodes key) {
         if (key == cocos2d::KEY_R && this->m_hasCompletedLevel) {
             this->m_hasCompletedLevel = false;
