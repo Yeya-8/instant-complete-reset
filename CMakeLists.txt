@@ -4,13 +4,9 @@ set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 
 project(InstantCompleteReset VERSION 1.0.0 LANGUAGES CXX)
 
-include($ENV{GEODE_SDK}/cmake/GeodeFile.cmake)
+# Tell Geode explicitly where the SDK folder lives so it can read its VERSION file
+set(GEODE_SDK_PATH "$ENV{GEODE_SDK}")
 
-# Force SDK version AFTER GeodeFile.cmake loads so it cannot be wiped out
-set(GEODE_SDK_VERSION "v3.0.0")
+include("${GEODE_SDK_PATH}/cmake/GeodeFile.cmake")
 
-add_library(${PROJECT_NAME} SHARED
-    src/main.cpp
-)
-
-setup_geode_mod(${PROJECT_NAME})
+setup_geode_mod(InstantCompleteReset)
