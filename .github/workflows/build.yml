@@ -15,5 +15,4 @@ jobs:
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          sdk: v4.10.2
-          configure-args: "--trace-expand"
+          sdk: 4.10.2
