@@ -1,17 +1,11 @@
 {
-	"geode": "$GEODE_VERSION",
+	"geode": "3.0.0",
 	"gd": {
-		"win": "2.2081",
-		"android": "2.2081",
-		"mac": "2.2081",
-		"ios": "2.2081"
+		"win": "2.206"
 	},
-	"id": "$MOD_ID",
-	"name": "$MOD_NAME",
-	"version": "$MOD_VERSION",
-	"developer": "$MOD_DEVELOPER",
-	"description": "$MOD_DESCRIPTION",
-	"dependencies": {
-		"geode.node-ids": ">=v1.23.3"
-	}
+	"id": "yeya.instant_complete_reset",
+	"name": "Instant Complete Reset",
+	"version": "v1.0.0",
+	"developer": "Yeya",
+	"description": "Restarts the level instantly with R during completion with 0% pause menu flash."
 }
