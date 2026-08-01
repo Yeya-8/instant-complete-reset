@@ -1,5 +1,5 @@
 {
-	"geode": "3.0.0",
+	"geode": "*",
 	"gd": {
 		"win": "2.206"
 	},
@@ -7,5 +7,5 @@
 	"name": "Instant Complete Reset",
 	"version": "1.0.0",
 	"developer": "Yeya",
-	"description": "Restarts the level instantly with R during completion with 0% pause menu flash."
+	"description": "Restarts the level instantly with R during completion."
 }
