@@ -16,3 +16,4 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           sdk: 4.10.2
+          use-cpm-cache: false
