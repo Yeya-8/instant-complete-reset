@@ -1,4 +1,18 @@
-- name: Build Mod
+name: Build Geode Mod
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Windows Mod
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
           sdk: v4.10.2
