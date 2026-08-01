@@ -13,6 +13,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Mod
-        uses: geode-sdk/build-geode-action@v3
-        with:
-          sdk: nightly
+        uses: geode-sdk/build-geode-mod@main
