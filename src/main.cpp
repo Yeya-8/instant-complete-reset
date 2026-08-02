@@ -10,11 +10,7 @@ class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
             if (auto pl = PlayLayer::get()) {
                 if (pl->m_hasCompletedLevel) {
                     pl->m_hasCompletedLevel = false;
-                    pl->resetLevel();
-                    pl->resumeSchedulerAndActions();
-                    if (pl->m_player1) {
-                        pl->m_player1->resumeSchedulerAndActions();
-                    }
+                    pl->resumeAndRestart(true);
                     return true;
                 }
             }
