@@ -9,9 +9,17 @@ class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
         if (isKeyDown && key == cocos2d::KEY_R) {
             if (auto pl = PlayLayer::get()) {
                 if (pl->m_hasCompletedLevel) {
-                    pl->m_hasCompletedLevel = false;
-                    pl->resumeAndRestart(true);
-                    return true;
+                    log::info("=== Scene dump ===");
+                    auto scene = cocos2d::CCDirector::sharedDirector()->getRunningScene();
+                    if (auto children = scene->getChildren()) {
+                        for (int i = 0; i < children->count(); i++) {
+                            auto node = static_cast<cocos2d::CCNode*>(children->objectAtIndex(i));
+                            log::info("Scene child {}: {} (zOrder {}, visible {})",
+                                i, typeid(*node).name(), node->getZOrder(), node->isVisible());
+                        }
+                    }
+                    log::info("PlayLayer children count: {}", pl->getChildrenCount());
+                    log::info("=== End dump ===");
                 }
             }
         }
