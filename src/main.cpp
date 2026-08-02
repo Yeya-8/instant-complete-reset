@@ -1,34 +1,38 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#include <Windows.h>
 
 using namespace geode::prelude;
 
 class $modify(MyPlayLayer, PlayLayer) {
     struct Fields {
-        bool lastCompleted = false;
-        bool lastEndChecked = false;
+        bool wasRDown = false;
+        bool isCompleting = false;
     };
 
     void checkForEnd() {
         PlayLayer::checkForEnd();
 
-        if (m_hasCompletedLevel != m_fields->lastCompleted) {
-            m_fields->lastCompleted = m_hasCompletedLevel;
-            log::info("m_hasCompletedLevel changed to {}", m_hasCompletedLevel);
+        if (m_endChecked) {
+            m_fields->isCompleting = true;
         }
-        if (m_endChecked != m_fields->lastEndChecked) {
-            m_fields->lastEndChecked = m_endChecked;
-            log::info("m_endChecked changed to {}", m_endChecked);
-        }
-    }
 
-    void levelComplete() {
-        log::info("levelComplete() called");
-        PlayLayer::levelComplete();
+        pollReset();
     }
 
     void activatePlatformerEndTrigger(EndTriggerGameObject* object, std::vector<int> const& remapKeys) {
-        log::info("activatePlatformerEndTrigger() called");
+        m_fields->isCompleting = true;
         PlayLayer::activatePlatformerEndTrigger(object, remapKeys);
+    }
+
+    void pollReset() {
+        bool rDown = (GetAsyncKeyState('R') & 0x8000) != 0;
+        if (rDown && !m_fields->wasRDown && m_fields->isCompleting) {
+            log::info("R detected, resetting");
+            m_fields->isCompleting = false;
+            m_hasCompletedLevel = false;
+            this->resetLevel();
+        }
+        m_fields->wasRDown = rDown;
     }
 };
