@@ -9,12 +9,6 @@ class $modify(MyPlayLayer, PlayLayer) {
         bool isCompleting = false;
     };
 
-    void activateEndTrigger(int targetID, bool reverse, bool lockPlayerY) {
-        m_fields->isCompleting = true;
-        log::info("activateEndTrigger fired - animation starting");
-        PlayLayer::activateEndTrigger(targetID, reverse, lockPlayerY);
-    }
-
     void activatePlatformerEndTrigger(EndTriggerGameObject* object, std::vector<int> const& remapKeys) {
         m_fields->isCompleting = true;
         log::info("activatePlatformerEndTrigger fired - animation starting");
