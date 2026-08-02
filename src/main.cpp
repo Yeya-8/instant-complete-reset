@@ -1,16 +1,20 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/CCKeyboardDispatcher.hpp>
 
 using namespace geode::prelude;
 
-class $modify(MyPlayLayer, PlayLayer) {
-    void keyDown(cocos2d::enumKeyCodes key) {
-        if (key == cocos2d::KEY_R && this->m_hasCompletedLevel) {
-            this->m_hasCompletedLevel = false;
-            this->resetLevel();
-            return;
+class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
+    bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool isKeyDown, bool isKeyRepeat) {
+        if (isKeyDown && key == cocos2d::KEY_R) {
+            if (auto pl = PlayLayer::get()) {
+                if (pl->m_hasCompletedLevel) {
+                    pl->m_hasCompletedLevel = false;
+                    pl->resetLevel();
+                    return true;
+                }
+            }
         }
-
-        PlayLayer::keyDown(key);
+        return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat);
     }
 };
