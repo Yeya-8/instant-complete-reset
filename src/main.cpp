@@ -9,12 +9,12 @@ class $modify(MyPlayLayer, PlayLayer) {
         bool wasRDown = false;
     };
 
-    void checkForEnd() {
-        PlayLayer::checkForEnd();
+    void update(float dt) {
+        PlayLayer::update(dt);
 
         bool rDown = (GetAsyncKeyState('R') & 0x8000) != 0;
         if (rDown && !m_fields->wasRDown && m_endChecked) {
-            log::info("R detected via raw poll during end sequence, resetting");
+            log::info("R detected via raw poll in update(), resetting");
             m_hasCompletedLevel = false;
             this->resetLevel();
         }
