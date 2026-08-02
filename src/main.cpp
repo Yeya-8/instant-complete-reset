@@ -10,11 +10,10 @@ class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
         if (isKeyDown && key == cocos2d::KEY_R) {
             if (auto pl = PlayLayer::get()) {
                 if (pl->m_hasCompletedLevel) {
-                    pl->m_hasCompletedLevel = false;
-                    Loader::get()->queueInMainThread([]() {
-                        if (auto pl = PlayLayer::get()) {
-                            pl->resetLevel();
-                        }
+                    auto level = pl->m_level;
+                    Loader::get()->queueInMainThread([level]() {
+                        auto scene = PlayLayer::scene(level, false, false);
+                        cocos2d::CCDirector::sharedDirector()->replaceScene(scene);
                     });
                     return true;
                 }
