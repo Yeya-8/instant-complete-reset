@@ -14,7 +14,7 @@ Every time you complete a level in Geometry Dash, there's a short animation befo
 
 ## How it works
 
-Geode's normal keyboard event pipeline doesn't fire while the completion animation is playing, so this mod polls the key state directly during that window and triggers a reset the moment R is detected — rather than waiting for the animation to hand control back first.
+Geode's normal keyboard event pipeline doesn't fire while the completion animation is playing, so this mod polls the key state directly during that window and triggers a reset the moment R is pressed rather than waiting for the animation to hand control back first.
 
 ## Installation
 
