@@ -6,29 +6,28 @@ using namespace geode::prelude;
 
 class $modify(MyPlayLayer, PlayLayer) {
     struct Fields {
-        bool isCompleting = false;
+        bool lastCompleted = false;
+        bool lastEndChecked = false;
     };
 
-    void activatePlatformerEndTrigger(EndTriggerGameObject* object, std::vector<int> const& remapKeys) {
-        m_fields->isCompleting = true;
-        log::info("activatePlatformerEndTrigger fired - animation starting");
-        PlayLayer::activatePlatformerEndTrigger(object, remapKeys);
+    void checkForEnd() {
+        PlayLayer::checkForEnd();
+
+        if (m_hasCompletedLevel != m_fields->lastCompleted) {
+            m_fields->lastCompleted = m_hasCompletedLevel;
+            log::info("m_hasCompletedLevel changed to {}", m_hasCompletedLevel);
+        }
+        if (m_endChecked != m_fields->lastEndChecked) {
+            m_fields->lastEndChecked = m_endChecked;
+            log::info("m_endChecked changed to {}", m_endChecked);
+        }
     }
 };
 
 class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
     bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool isKeyDown, bool isKeyRepeat, double time) {
         if (isKeyDown && key == cocos2d::KEY_R) {
-            if (auto pl = PlayLayer::get()) {
-                auto modPl = static_cast<MyPlayLayer*>(pl);
-                if (modPl->m_fields->isCompleting) {
-                    modPl->m_fields->isCompleting = false;
-                    pl->m_hasCompletedLevel = false;
-                    log::info("R caught mid-animation, resetting now");
-                    pl->resetLevel();
-                    return true;
-                }
-            }
+            log::info("R pressed");
         }
         return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat, time);
     }
