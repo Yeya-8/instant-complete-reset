@@ -1,7 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
 #include <Geode/modify/CCKeyboardDispatcher.hpp>
-#include <Geode/loader/Loader.hpp>
 
 using namespace geode::prelude;
 
@@ -11,9 +10,11 @@ class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
             if (auto pl = PlayLayer::get()) {
                 if (pl->m_hasCompletedLevel) {
                     pl->m_hasCompletedLevel = false;
-                    pl->unscheduleAllSelectors();
-                    log::info("Unscheduled selectors, resetting...");
                     pl->resetLevel();
+                    pl->resumeSchedulerAndActions();
+                    if (pl->m_player1) {
+                        pl->m_player1->resumeSchedulerAndActions();
+                    }
                     return true;
                 }
             }
