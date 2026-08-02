@@ -1,2 +1,3 @@
-# 1.0.0
-- Edit this file to change your mod's changelog.
+## 1.0.0
+- Initial release.
+- Pressing R during or after the level-completion animation instantly restarts the level.
