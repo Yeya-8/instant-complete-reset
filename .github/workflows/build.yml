@@ -1,20 +1,25 @@
 name: Build Geode Mod
+
 on:
   push:
   workflow_dispatch:
+
 jobs:
   build:
     name: Build Windows Mod
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - name: Build Mod
         id: build
         uses: geode-sdk/build-geode-mod@main
         with:
           sdk: given
-      - name: Upload artifacts
+
+      - name: Upload Mod Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-output
+          name: instant-complete-reset
           path: ${{ steps.build.outputs.build-output }}
