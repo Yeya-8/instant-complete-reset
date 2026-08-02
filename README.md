@@ -1,23 +1,36 @@
-# Template
-This is where she makes a mod.
+# Instant Complete Reset
 
-<img src="logo.png" width="150" alt="the mod's logo" />
+A small quality of life mod for Geometry Dash that lets you restart a level the instant you're done with it. no waiting for the end screen animation to finish, no navigating menus.
 
-*Update logo.png to change your mod's icon (please)*
+Press **R** at any point after finishing a level, even while the completion animation is still playing, and the level restarts immediately.
 
-## Getting started
-We recommend heading over to [the getting started section on our docs](https://docs.geode-sdk.org/getting-started/) for useful info on what to do next.
+<p align="center">
+  <img src="logo.png" width="150" alt="Instant Complete Reset logo" />
+</p>
 
-## Build instructions
-For more info, see [our docs](https://docs.geode-sdk.org/getting-started/create-mod#build)
+## Why
+
+Every time you complete a level in Geometry Dash, there's a short animation before you're dropped back into the menu or given the option to retry. If you're grinding attempts on a level — practicing, speedrunning, or just chasing a better time — that animation adds up fast. This mod skips it entirely: hit R and you're straight back into the level.
+
+## How it works
+
+Geode's normal keyboard event pipeline doesn't fire while the completion animation is playing, so this mod polls the key state directly during that window and triggers a reset the moment R is detected — rather than waiting for the animation to hand control back first.
+
+## Installation
+
+1. Install [Geode](https://geode-sdk.org/) if you haven't already.
+2. Grab the `.geode` file from the [Releases](../../releases) page (or build it yourself see below).
+3. Drop it into your Geode mods folder, or install it directly through the in game mod browser.
+
+## Building from source
+
 ```sh
-# Assuming you have the Geode CLI set up already
+# Requires the Geode CLI: https://github.com/geode-sdk/cli
 geode build
 ```
 
-# Resources
-* [Geode SDK Documentation](https://docs.geode-sdk.org/)
-* [Geode SDK Source Code](https://github.com/geode-sdk/geode/)
-* [Geode CLI](https://github.com/geode-sdk/cli)
-* [Bindings](https://github.com/geode-sdk/bindings/)
-* [Dev Tools](https://github.com/geode-sdk/DevTools)
+Windows builds are also produced automatically via GitHub Actions on every push — see `.github/workflows/build.yml`.
+
+## Compatibility
+
+Currently built and tested for Windows on Geometry Dash 2.2081. Support for other platforms hasn't been tested yet.
