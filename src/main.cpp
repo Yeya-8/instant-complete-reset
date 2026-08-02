@@ -5,7 +5,7 @@
 using namespace geode::prelude;
 
 class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
-    bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool isKeyDown, bool isKeyRepeat) {
+    bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool isKeyDown, bool isKeyRepeat, double time) {
         if (isKeyDown && key == cocos2d::KEY_R) {
             if (auto pl = PlayLayer::get()) {
                 if (pl->m_hasCompletedLevel) {
@@ -15,6 +15,6 @@ class $modify(InstantResetDispatcher, CCKeyboardDispatcher) {
                 }
             }
         }
-        return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat);
+        return CCKeyboardDispatcher::dispatchKeyboardMSG(key, isKeyDown, isKeyRepeat, time);
     }
 };
