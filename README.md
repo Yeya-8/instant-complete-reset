@@ -10,7 +10,7 @@ Press **R** at any point after finishing a level, even while the completion anim
 
 ## Why
 
-Every time you complete a level in Geometry Dash, there's a short animation before you're dropped back into the menu or given the option to retry. If you're grinding attempts on a level — practicing, speedrunning, or just chasing a better time — that animation adds up fast. This mod skips it entirely: hit R and you're straight back into the level.
+Every time you complete a level in Geometry Dash, there's a short animation before you're dropped back into the menu or given the option to retry. If you're grinding attempts on a level or practicing or aura farming, that animation adds up fast. This mod skips it entirely. hit R and you're straight back into the level.
 
 ## How it works
 
