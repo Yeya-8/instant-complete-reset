@@ -1,3 +1,5 @@
+# Changelog
+
 ## 1.0.1
 - Fixed: instant reset now also works on end-trigger endings (previously only worked on standard/classic level endings).
 
