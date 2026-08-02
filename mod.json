@@ -5,7 +5,7 @@
 	},
 	"id": "yeya.instant_complete_reset",
 	"name": "Instant Complete Reset",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"developer": "yeya8",
 	"description": "Skip the completion animation and instantly restart with R."
 }
